@@ -1,11 +1,24 @@
 # My Space
-This is project created only using HTML, CSS and JS for focusing major and simple problem facing by normal user to memorize and note important things and make that accessable faster and make them more secure from others!
+Simple website that you can save notes in browser!
 
-In this project, user can simply create a 4 digit PIN and secure from others. The user can only accessable using the PIN verification.
+## Features
+- Secure with PIN
+- Saved everything with localStorage
+- User-friendly
+- Modern UI design
+- Reset setup
 
-User can input the text and save that in localStorage. That will list out in home page and the user also can delete if the user dosen't need actuly which make the project more user-friendly.
+## Technical Side
+This website is completely made up of HTML, CSS and JS.
 
-Can be simply reset eveything including PIN and saved notes by double clicking on *C* in PIN security screen which make a good feature for the user!
+User can create a PIN and only accessible to the website using that PIN only.
 
-Website is 100% secure from data leaking beacuse the datas are saved in you's (user's) localstorage!
+If the user is new or there is no saved notes the website will show up a *empty state* that enrage the user to use and make active in the website!
 
+You can simply add the text needed to be saved in the website by entering in the input section and by clicking the sent button.
+
+The notes will be showed as list menu with a default button on top-right corner of every list to delete if the you need to remove or delete it.
+
+## Q/A Section
+- You can reset PIN and everything using double clicking on 'C' in PIN security screen (it will reset everything including your saved notes)
+- Your data is 100% safe! In technical side, only used localStorage which give more privacy to the user, Giving more importance to user privacy!
