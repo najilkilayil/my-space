@@ -94,3 +94,30 @@ body {
     font-size: 20px;
     cursor: pointer;
 }
+
+.empty_state {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 55vh;
+    text-align: center;
+    color: #666;
+
+    .icon {
+        font-size: 70px;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-size: 28px;
+        color: #6d28d9;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 20px;
+    }
+}
+
