@@ -18,6 +18,8 @@ if (messages === null) {
 }
 
 function renderMsg() {
+    passwordArea.style.display = "none"
+    mainArea.style.display = "flex"
     sectionList.innerHTML = ""
 
     if (messages.length === 0) {
@@ -54,7 +56,7 @@ subBtn.addEventListener("click", function () {
     let month = today.getMonth() + 1
     let year = today.getFullYear()
     let date = `${day}/${month}/${year}`
- 
+
     messages.push({
         message: msgInputEl.value,
         date: date
@@ -65,4 +67,54 @@ subBtn.addEventListener("click", function () {
     renderMsg()
 })
 
-renderMsg()
+// renderMsg()
+
+let passwordInput = document.getElementById("password_input")
+let passwordArea = document.getElementById("password_area")
+let passwordText = document.getElementById("pass_text")
+let mainArea = document.getElementById("main_area")
+let passVerify = document.getElementById("pass_verify")
+
+let PIN = localStorage.getItem("pin")
+if (PIN === null) {
+    passwordText.textContent = "Create PIN to continue"
+} else {
+    passwordText.textContent = "Enter PIN to continue"
+}
+
+function pinNum(num) {
+    if (passwordInput.value.length < 4) {
+        passwordInput.value += num
+    }
+}
+
+function clearPin() {
+    passwordInput.value = ""
+}
+
+function checkPin() {
+    if (PIN === null) {
+        if (passwordInput.value.length !== 4) {
+            passVerify.textContent = "Enter 4 digit PIN"
+            return
+        }
+        localStorage.setItem("pin", passwordInput.value)
+
+        passVerify.textContent = "PIN created successfully"
+        PIN = localStorage.getItem("pin")
+        passwordInput.value = ''
+        renderMsg()
+    } else {
+        // let Pin = '1234'
+        if (passwordInput.value === PIN) {
+            passVerify.textContent = "Correct PIN"
+            passVerify.style.color = "green"
+            renderMsg()
+        } else {
+            passVerify.textContent = "Wrong PIN"
+            passVerify.style.color = "red"
+            passwordInput.value = ""
+        }
+    }
+}
+

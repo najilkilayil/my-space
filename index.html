@@ -1,21 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Space</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    
-    <div class="heading_area" id="heading_area">
-        <h1>Saved</h1>
-        <p>Save personal messages <br>
-            (Local Storage) </p>
-    </div> 
 
-    <div class="sections_list" id="sections_list">
-        <!-- <div class="section" id="section">
+<body>
+
+    <div class="password_area" id="password_area">
+        <h1>My <span>Space</span></h1>
+        <p id="pass_text"></p>
+        <p id="pass_verify"></p>
+
+        <input type="password" id="password_input" maxlength="4" readonly>
+
+        <div class="password_keypad" id="password_keypad">
+            <button onclick="pinNum('1')">1</button>
+            <button onclick="pinNum('2')">2</button>
+            <button onclick="pinNum('3')">3</button>
+
+            <button onclick="pinNum('4')">4</button>
+            <button onclick="pinNum('5')">5</button>
+            <button onclick="pinNum('6')">6</button>
+
+            <button onclick="pinNum('7')">7</button>
+            <button onclick="pinNum('8')">8</button>
+            <button onclick="pinNum('9')">9</button>
+
+            <button onclick="clearPin()">C</button>
+            <button onclick="pinNum('0')">0</button>
+            <button onclick="checkPin()">OK</button>
+        </div>
+    </div>
+
+    <div class="main_area" id="main_area">
+        <div class="heading_area" id="heading_area">
+            <h1>Saved</h1>
+            <p>Save personal messages <br>
+                (Local Storage) </p>
+        </div>
+
+        <div class="sections_list" id="sections_list">
+            <!-- <div class="section" id="section">
             <p id="msg">Message 1</p>
             <p id="date">13/7/26</p>
         </div>
@@ -27,7 +56,7 @@
             <p id="msg">Message 3</p>
             <p id="date">13/7/26</p>
         </div> -->
-        <!-- <div class="empty_state" id="empty_state">
+            <!-- <div class="empty_state" id="empty_state">
             <div class="icon" id="icon">💜</div>
             <h2>No saved messages</h2>
             <p>
@@ -35,13 +64,15 @@
                 Write your first message below!
             </p>
         </div> -->
-    </div>
+        </div>
 
-    <div class="input_area" id="input_area">
-        <textarea id="chat_box" placeholder="Write a message...." rows="2"></textarea>
-        <button id="chat_btn">➤</button>
+        <div class="input_area" id="input_area">
+            <textarea id="chat_box" placeholder="Write a message...." rows="2"></textarea>
+            <button id="chat_btn">➤</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
 </body>
+
 </html>

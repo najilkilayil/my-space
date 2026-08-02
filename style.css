@@ -145,3 +145,55 @@ body {
         transform: translateY(-3px);
     }
 }
+
+.main_area {
+    width: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.password_area {
+    display: flex;
+    position: absolute;
+    top: 20%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    span {
+        color: #5b21b6;
+    }
+
+    p {
+        color: #777;
+    }
+
+    input {
+        margin-top: 10px;
+        outline: none;
+        padding: 2px;
+        padding-left: 20px;
+        border-radius: 16px;
+        border: 1px solid #5b21b6;
+        font-size: larger;
+        width: 210px;
+    }
+}
+
+.password_keypad {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 70px);
+    grid-template-rows: repeat(4, 60px);
+    gap: 10px;
+
+    button {
+        border-radius: 15px;
+        border: 1px solid #5b21b6;
+        font-weight: 600;
+        cursor: pointer;
+        color: #1f2937;
+    }
+}
