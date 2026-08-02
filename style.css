@@ -45,6 +45,7 @@ body {
     border: 1px solid #e5e5e7eb;
     box-shadow: 0 4px 15px rgba(0, 0, 0, .05);
     transition: 0.5s;
+    position: relative;
 }
 
 .section:hover {
@@ -207,4 +208,27 @@ body {
     button:active {
         transform: scale(0.9);
     }
+}
+
+.dlt_btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 80px;
+    height: 25px;
+    border: 1px solid #5b21b6;
+    border-radius: 16px;
+    color: #5b21b6;
+    background-color: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transform: scale(0.8);
+    transition: 0.5s;
+}
+
+.dlt_btn:hover {
+    transform: scale(1);
+    background-color: #5b21b6;
+    color: white;
 }

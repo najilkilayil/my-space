@@ -35,14 +35,23 @@ function renderMsg() {
         `
     }
 
-    messages.forEach(item => {
+    messages.forEach((item, index) => {
         sectionList.innerHTML += `
-            <div class="section" id="section">
+            <div class="section" id="section" data-index="${index}">
+                <button class="dlt_btn" id="dlt_btn" onclick="dltMsg(event, ${index})">Delete</button>
                 <p id="msg">${item.message}</p>
                 <p id="date">${item.date}</p>
             </div>
         `
     });
+}
+
+function dltMsg(event, index) {
+    if (confirm("Delete this message?")) {
+        messages.splice(index, 1)
+        localStorage.setItem("messages", JSON.stringify(messages))
+        renderMsg()
+    }
 }
 
 subBtn.addEventListener("click", function () {
