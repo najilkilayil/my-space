@@ -20,6 +20,19 @@ if (messages === null) {
 function renderMsg() {
     sectionList.innerHTML = ""
 
+    if (messages.length === 0) {
+        sectionList.innerHTML = `
+            <div class="empty_state" id="empty_state">
+                <div class="icon" id="icon">💜</div>
+                <h2>No saved messages</h2>
+                <p>
+                    Your personal messages will appear here. <br>
+                    Write your first message below!
+                </p>
+            </div>
+        `
+    }
+
     messages.forEach(item => {
         sectionList.innerHTML += `
             <div class="section" id="section">
