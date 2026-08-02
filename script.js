@@ -96,6 +96,7 @@ function checkPin() {
     if (PIN === null) {
         if (passwordInput.value.length !== 4) {
             passVerify.textContent = "Enter 4 digit PIN"
+            passwordInput.value = ""
             return
         }
         localStorage.setItem("pin", passwordInput.value)
@@ -111,10 +112,23 @@ function checkPin() {
             passVerify.style.color = "green"
             renderMsg()
         } else {
-            passVerify.textContent = "Wrong PIN"
+            passVerify.innerHTML = `Wrong PIN <br> for Reset double click on C`
             passVerify.style.color = "red"
             passwordInput.value = ""
         }
     }
 }
 
+let resetBtn = document.getElementById("reset_btn")
+
+resetBtn.addEventListener("dblclick", function() {
+    if (confirm("Reset your PIN?")) {
+        localStorage.removeItem("pin")
+        PIN = null
+        localStorage.removeItem("messages")
+        messages = null
+        passwordInput.value = ""
+        passwordText.textContent = "Create new PIN to continue"
+        passVerify.innerHTML = ``
+    }
+})

@@ -195,5 +195,16 @@ body {
         font-weight: 600;
         cursor: pointer;
         color: #1f2937;
+        transition: 0.5s;
+    }
+
+    button:hover {
+        background-color: #5b21b6;
+        color: white;
+        transform: scale(1.1);
+    }
+
+    button:active {
+        transform: scale(0.9);
     }
 }
