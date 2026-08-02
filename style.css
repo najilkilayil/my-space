@@ -44,6 +44,11 @@ body {
     border-radius: 16px;
     border: 1px solid #e5e5e7eb;
     box-shadow: 0 4px 15px rgba(0, 0, 0, .05);
+    transition: 0.5s;
+}
+
+.section:hover {
+    transform: translateY(-3px);
 }
 
 #msg {
@@ -93,6 +98,12 @@ body {
     background: #7c3aed;
     font-size: 20px;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+#chat_btn:hover {
+    transform: scale(1.1);
+    background: #5b21b6;
 }
 
 .empty_state {
@@ -106,7 +117,8 @@ body {
 
     .icon {
         font-size: 70px;
-        margin-bottom: 15px;
+        margin-bottom: 3px;
+        animation: moveing_icon 2s infinite;
     }
 
     h2 {
@@ -121,3 +133,15 @@ body {
     }
 }
 
+@keyframes moveing_icon {
+    0% {
+        transform: translateY(-3px);
+    }
+    50% {
+        transform: translateY(3px);
+    }
+
+    100% {
+        transform: translateY(-3px);
+    }
+}
