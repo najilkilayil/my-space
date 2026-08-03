@@ -7,6 +7,9 @@ Simple website that you can save notes in browser!
 - User-friendly
 - Modern UI design
 - Reset setup
+- Dark theme
+- Animations
+- Dynamic Text Input Box
 
 ## Technical Side
 This website is completely made up of HTML, CSS and JS.
@@ -18,6 +21,8 @@ If the user is new or there is no saved notes the website will show up a *empty 
 You can simply add the text needed to be saved in the website by entering in the input section and by clicking the sent button.
 
 The notes will be showed as list menu with a default button on top-right corner of every list to delete if the you need to remove or delete it.
+
+Used perfect colour palette and animations to give a modern look into the website
 
 ## Q/A Section
 - You can reset PIN and everything using double clicking on 'C' in PIN security screen (it will reset everything including your saved notes)
