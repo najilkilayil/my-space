@@ -18,18 +18,22 @@ if (messages === null) {
 }
 
 function renderMsg() {
-    passwordArea.style.display = "none"
-    mainArea.style.display = "flex"
+    passwordArea.style.animation = "fadeOut 0.5s"
+    mainArea.style.animation = "fadeIn 0.5s"
+    setInterval(() => {
+        passwordArea.style.display = "none"
+        mainArea.style.display = "flex"
+    }, 500);
     sectionList.innerHTML = ""
 
     if (messages.length === 0) {
         sectionList.innerHTML = `
             <div class="empty_state" id="empty_state">
-                <div class="icon" id="icon">💜</div>
-                <h2>No saved messages</h2>
+                <div class="icon" id="icon">🔒</div>
+                <h2>Vault Empty</h2>
                 <p>
-                    Your personal messages will appear here. <br>
-                    Write your first message below!
+                    No confidential files stored. <br>
+                    Store your first secret.
                 </p>
             </div>
         `
@@ -37,8 +41,8 @@ function renderMsg() {
 
     messages.forEach((item, index) => {
         sectionList.innerHTML += `
-            <div class="section" id="section" data-index="${index}">
-                <button class="dlt_btn" id="dlt_btn" onclick="dltMsg(event, ${index})">Delete</button>
+            <div class="section" id="section" data-index="${index}" style="animation-delay: ${index*0.1}s">
+                <button class="dlt_btn" id="dlt_btn" onclick="dltMsg(event, ${index})">Remove</button>
                 <p id="msg">${item.message}</p>
                 <p id="date">${item.date}</p>
             </div>
@@ -61,10 +65,10 @@ subBtn.addEventListener("click", function () {
     }
 
     let today = new Date()
-    let day = today.getDate()
-    let month = today.getMonth() + 1
+    let day = String(today.getDate()).padStart(2, "0")
+    let month = today.toLocaleString("en-US", {month: "short"})
     let year = today.getFullYear()
-    let date = `${day}/${month}/${year}`
+    let date = `${day}-${month}-${year}`
 
     messages.push({
         message: msgInputEl.value,
@@ -73,6 +77,8 @@ subBtn.addEventListener("click", function () {
 
     localStorage.setItem("messages", JSON.stringify(messages))
     msgInputEl.value = ''
+    msgInputEl.blur()
+    subBtn.blur()
     renderMsg()
 })
 
@@ -93,7 +99,11 @@ if (PIN === null) {
 
 function pinNum(num) {
     if (passwordInput.value.length < 4) {
+        passwordInput.style.animation = "none"
         passwordInput.value += num
+        passwordInput.style.borderColor = "#00E5C3"
+        passwordInput.style.boxShadow = "0 0 25px rgba(0, 229, 195, 0.35)"
+        passVerify.innerHTML = ``
     }
 }
 
@@ -110,20 +120,30 @@ function checkPin() {
         }
         localStorage.setItem("pin", passwordInput.value)
 
-        passVerify.textContent = "PIN created successfully"
+        passVerify.textContent = " "
         PIN = localStorage.getItem("pin")
         passwordInput.value = ''
         renderMsg()
     } else {
         // let Pin = '1234'
         if (passwordInput.value === PIN) {
-            passVerify.textContent = "Correct PIN"
-            passVerify.style.color = "green"
-            renderMsg()
+            // passVerify.textContent = "Correct PIN"
+            // passVerify.style.color = "green"
+            // renderMsg()
+
+            setTimeout(() => {
+                renderMsg()
+            }, 500)
+            passwordInput.style.borderColor = "green"
+            passwordInput.style.boxShadow = "0 0 25px green"
         } else {
-            passVerify.innerHTML = `Wrong PIN <br> for Reset double click on C`
+            passVerify.textContent = "For Reset double click on C"
             passVerify.style.color = "red"
             passwordInput.value = ""
+
+            passwordInput.style.borderColor = "#FF5D73"
+            passwordInput.style.boxShadow = "0 0 25px #FF5D73"
+            passwordInput.style.animation = "shake 0.5s"
         }
     }
 }
@@ -135,9 +155,10 @@ resetBtn.addEventListener("dblclick", function() {
         localStorage.removeItem("pin")
         PIN = null
         localStorage.removeItem("messages")
-        messages = null
+        messages = []
+        localStorage.removeItem("messages")
         passwordInput.value = ""
         passwordText.textContent = "Create new PIN to continue"
-        passVerify.innerHTML = ``
+        passVerify.textContent = " "
     }
 })

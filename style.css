@@ -1,17 +1,23 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: none;
+    box-sizing: border-box;
 }
 
 body {
     text-align: center;
-    font-family: monospace;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: #f5f5f5;
+    /* justify-content: center; */
+    /* background-color: #f5f5f5; */
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #16243D 0%, #101522 30%, #090B10 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow-x: hidden;
+    /* overflow-y: auto; */
 }
 
 .heading_area {
@@ -21,11 +27,16 @@ body {
 }
 
 .heading_area h1 {
-    color: #6d28d9;
+    /* color: #6d28d9; */
+    color: #00E5C3;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-family: "Audiowide", sans-serif;
 }
 
 .heading_area p {
     color: #777;
+    font-family: monospace;
 }
 
 .sections_list {
@@ -37,46 +48,61 @@ body {
 
 .section {
     width: 80%;
-    background-color: #ffffff;
+    background-color: #151B26;
     text-align: start;
-    padding: 2%;
+    padding: 22px;
     margin-bottom: 1%;
-    border-radius: 16px;
-    border: 1px solid #e5e5e7eb;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, .05);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 229, 195, 0.25);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
     transition: 0.5s;
     position: relative;
+    color: #D4D7DE;
+    opacity: 0;
+    transform: translateY(25px);
+    animation: showList 0.5s forwards;
 }
 
 .section:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
+    box-shadow: 0 0 30px rgba(0, 229, 195, 0.15);
 }
 
 #msg {
     font-family: 18px;
     font-weight: 500;
+    font-family: "Space Grotesk", sans-serif;
+}
+
+#msg::before {
+    content: '🔒';
+    display: flex;
+    position: relative;
+    top: -10px;
 }
 
 #date {
     font-size: 13px;
-    color: #888;
+    color: #7B8496;
+    font-family: "Cinzel", serif;
 }
 
 .input_area {
     position: fixed;
     bottom: 20px;
     left: 50%;
-    width: 80%;
+    width: 120px;
     max-width: 900px;
     display: flex;
     align-items: flex-end;
     gap: 10px;
-    background: #fff;
-    border: 1px solid #ddd;
+    background: #151B26;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     transform: translateX(-50%);
     border-radius: 50px;
     padding: 10px 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, .1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    transition: 0.5s;
 }
 
 #chat_box {
@@ -88,6 +114,12 @@ body {
     padding: 8px 0;
     max-height: 120px;
     font-size: 16px;
+    color: #F7F8FA;
+    overflow-y: hidden;
+}
+
+#chat_box::placeholder {
+    color: #7B8496;
 }
 
 #chat_btn {
@@ -95,17 +127,26 @@ body {
     height: 50px;
     border: none;
     border-radius: 50%;
-    color: white;
-    background: #7c3aed;
+    color: #090B10;
+    background: #00E5C3;
     font-size: 20px;
     cursor: pointer;
     transition: 0.3s;
+    display: none;
 }
 
 #chat_btn:hover {
     transform: scale(1.1);
-    background: #5b21b6;
-    border: none;
+    background: #00FFD5;
+    box-shadow: 0 0 30px rgba(0, 229, 195, 0.5);
+}
+
+.input_area:focus-within {
+    width: 80%;
+}
+
+.input_area:focus-within #chat_btn {
+    display: block;
 }
 
 .empty_state {
@@ -116,29 +157,32 @@ body {
     height: 55vh;
     text-align: center;
     color: #666;
-
-    .icon {
+}
+.empty_state .icon {
         font-size: 70px;
         margin-bottom: 3px;
         animation: moveing_icon 2s infinite;
-    }
+}
 
-    h2 {
+.empty_state  h2 {
         font-size: 28px;
         color: #6d28d9;
         margin-bottom: 10px;
-    }
+        font-family: "Orbitron", sans-serif;
+}
 
-    p {
+.empty_state p {
         font-size: 16px;
         line-height: 20px;
-    }
+        font-family: "Orbitron", sans-serif;
 }
+
 
 @keyframes moveing_icon {
     0% {
         transform: translateY(-3px);
     }
+
     50% {
         transform: translateY(3px);
     }
@@ -163,16 +207,23 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background: #101522;
+    padding: 35px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+}
 
-    span {
-        color: #5b21b6;
-    }
+.password_area span {
+        color: #F7F8FA;
+}
 
-    p {
-        color: #777;
-    }
+.password_area p {
+        color: #D4D7DE;
+        font-family: "Oxanium", sans-serif;
+}
 
-    input {
+.password_area input {
         margin-top: 10px;
         outline: none;
         padding: 2px;
@@ -182,33 +233,54 @@ body {
         font-size: larger;
         width: 210px;
     }
-}
 
 .password_keypad {
     margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(3, 70px);
     grid-template-rows: repeat(4, 60px);
-    gap: 10px;
-
-    button {
-        border-radius: 15px;
-        border: 1px solid #5b21b6;
+    gap: 20px;
+}
+.password_keypad button {
+        width: 70px;
+        height: 70px;
+        border-radius: 70px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
         font-weight: 600;
         cursor: pointer;
-        color: #1f2937;
+        color: #D4D7DE;
         transition: 0.5s;
+        background-color: #171C28;
     }
 
-    button:hover {
-        background-color: #5b21b6;
-        color: white;
+.password_keypad button:hover {
+        background-color: #232B3C;
+        color: cyan;
         transform: scale(1.1);
+        box-shadow: 0 0 40px -2px rgba(0, 229, 195, 0.4);
     }
 
-    button:active {
+.password_keypad button:active {
         transform: scale(0.9);
     }
+
+#password_input {
+    width: 220px;
+    height: 55px;
+    background: #151B26;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    color: #F7F8FA;
+    font-size: 30px;
+    text-align: center;
+    letter-spacing: 15px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
+    transition: 0.3s;
+}
+
+#password_input:focus {
+    border-color: #00E5C3;
+    box-shadow: 0 0 25px rgba(0, 255, 195, 0.35);
 }
 
 .dlt_btn {
@@ -217,20 +289,21 @@ body {
     right: 6px;
     width: 80px;
     height: 25px;
-    border: 1px solid #5b21b6;
+    border: none;
     border-radius: 16px;
-    color: #5b21b6;
-    background-color: transparent;
+    color: #D4D7DE;
+    background: #FF5D73;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     transform: scale(0.8);
     transition: 0.5s;
+    z-index: 999;
 }
 
 .dlt_btn:hover {
     transform: scale(1);
-    background-color: #5b21b6;
+    background-color: red;
     color: white;
 }
 
@@ -238,4 +311,65 @@ body {
     background-color: red;
     border: 1px solid red;
     color: white;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-4px);
+    }
+    50% {
+        transform: translateX(4px);
+    }
+    75% {
+        transform: translateX(-4px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-200%);
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        transform: translateX(200%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+        display: none;
+    }
+}
+
+@keyframes showList {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(4px) scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+h1 {
+    font-family: "Audiowide", sans-serif;
 }
