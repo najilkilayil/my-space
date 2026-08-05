@@ -103,8 +103,6 @@ function pinNum(num) {
     if (passwordInput.value.length < 4) {
         passwordInput.style.animation = "none"
         passwordInput.value += num
-        passwordInput.style.borderColor = "#00E5C3"
-        passwordInput.style.boxShadow = "0 0 25px rgba(0, 229, 195, 0.35)"
         passVerify.innerHTML = ``
     }
 }
@@ -136,16 +134,18 @@ function checkPin() {
             setTimeout(() => {
                 renderMsg()
             }, 500)
-            passwordInput.style.borderColor = "green"
-            passwordInput.style.boxShadow = "0 0 25px green"
+            passwordInput.style.color = "#5dff62"
         } else {
-            passVerify.textContent = "For Reset double click on C"
-            passVerify.style.color = "red"
-            passwordInput.value = ""
-
-            passwordInput.style.borderColor = "#FF5D73"
-            passwordInput.style.boxShadow = "0 0 25px #FF5D73"
+            passwordInput.style.color = "#FF5D73"
+            passVerify.style.color = "#FF5D73"
             passwordInput.style.animation = "shake 0.5s"
+            setTimeout(() => {
+                passwordInput.value = ""
+                passVerify.innerHTML = `For Reset double click on C`
+                passwordInput.style.color = "#F7F8FA"
+            }, 1500)
+            
+            
         }
     }
 }
