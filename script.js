@@ -3,6 +3,7 @@ let sectionList = document.getElementById("sections_list")
 let msgInputEl = document.getElementById("chat_box")
 let subBtn = document.getElementById("chat_btn")
 
+let body = document.getElementById("body_el")
 // let today = new Date()
 
 // let day = today.getDate()
@@ -18,6 +19,7 @@ if (messages === null) {
 }
 
 function renderMsg() {
+    body.style.overflowY = "auto"
     passwordArea.style.animation = "fadeOut 0.5s"
     mainArea.style.animation = "fadeIn 0.5s"
     setInterval(() => {
