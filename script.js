@@ -164,3 +164,17 @@ resetBtn.addEventListener("dblclick", function() {
         passVerify.textContent = " "
     }
 })
+
+// dot random motion and animation 
+for (let i=1; i < 50; i++) {
+    let dot = document.createElement("div")
+    dot.className = "dot"
+    dot.style = `--i: ${i}`
+    body.appendChild(dot)
+
+    function moveDot() {
+        dot.style.left = Math.random() * window.innerWidth + "px"
+        dot.style.top = Math.random() * window.innerHeight + "px"
+    }
+    moveDot()
+}
