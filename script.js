@@ -178,3 +178,22 @@ for (let i=1; i < 50; i++) {
     }
     moveDot()
 }
+
+let inputArea = document.getElementById("input_area")
+let headArea = document.getElementById("bottom_head_area")
+let headText = document.getElementById("bottom_text_area")
+let bottomLogo = document.getElementById("bottom_logo")
+
+inputArea.addEventListener("focusin", function() {
+    headArea.style.width = "10%"
+    headText.style.display = "none"
+    bottomLogo.style.display = "block"
+})
+
+inputArea.addEventListener("focusout", function() {
+    headArea.style.width = "80%"
+    bottomLogo.style.display = "none"
+    setTimeout(() => {
+        headText.style.display = "flex"
+    }, 400);
+})

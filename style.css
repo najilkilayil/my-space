@@ -102,16 +102,15 @@ body {
 
 .input_area {
     position: fixed;
-    bottom: 20px;
-    left: 50%;
-    width: 120px;
+    right: 20%;
+    height: 80px;
+    width: 10%;
     max-width: 900px;
     display: flex;
     align-items: flex-end;
     gap: 10px;
     background: #151B26ad;
     border: 1px solid rgba(255, 255, 255, 0.08);
-    transform: translateX(-50%);
     border-radius: 50px;
     padding: 10px 15px;
     transition: 0.5s;
@@ -153,13 +152,13 @@ body {
     box-shadow: 0 0 30px rgba(0, 229, 195, 0.5);
 }
 
-.input_area:focus-within {
+/* .input_area:focus-within {
     width: 80%;
 }
 
 .input_area:focus-within #chat_btn {
     display: block;
-}
+} */
 
 .empty_state {
     display: flex;
@@ -473,4 +472,50 @@ h1 {
     100% {
         transform: translateY(-40px);
     }
+}
+
+.bottom_area {
+    position: fixed;
+    bottom: 2%;
+    width: 60%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+}
+
+.bottom_head_area {
+    width: 80%;
+    color: #D4D7DE;
+    background: #151B26ad;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+
+.bottom_text_area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom_text_area p {
+    text-align: left;
+    padding-left: 20px;
+}
+
+.bottom_logo {
+    text-align: center;
+    font-size: 50px;
+    display: flex;
+}
+
+.input_area:focus-within {
+    width: 50%;
+}
+
+.input_area:focus-within #chat_btn {
+    display: block;
 }
