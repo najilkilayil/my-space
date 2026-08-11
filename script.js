@@ -22,7 +22,7 @@ let editMode = null
 function renderMsg() {
     passwordArea.style.animation = "fadeOut 0.5s"
     mainArea.style.animation = "fadeIn 0.5s"
-    setInterval(() => {
+    setTimeout(() => {
         passwordArea.style.display = "none"
         mainArea.style.display = "flex"
     }, 500);
@@ -59,6 +59,7 @@ function dltMsg(event, index) {
         messages.splice(index, 1)
         localStorage.setItem("messages", JSON.stringify(messages))
         renderMsg()
+        alertNoti("Removed", "#FF5D73")
     }
 }
 
@@ -85,11 +86,11 @@ subBtn.addEventListener("click", function () {
     } else {
         messages[editMode].message = msgInputEl.value
         messages[editMode].date = date
-        editMode === null
         subBtn.textContent = "➤"
         setTimeout(() => {
             alertNoti("Edited", "#D4D7DE")
         }, 700);
+        editMode = null
     }
 
     localStorage.setItem("messages", JSON.stringify(messages))
@@ -200,7 +201,7 @@ let headText = document.getElementById("bottom_text_area")
 let bottomLogo = document.getElementById("bottom_logo")
 
 inputArea.addEventListener("focusin", function () {
-    headArea.style.width = "10%"
+    headArea.style.width = "12%"
     headText.style.display = "none"
     bottomLogo.style.display = "block"
 })
