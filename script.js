@@ -4,21 +4,34 @@ let msgInputEl = document.getElementById("chat_box")
 let subBtn = document.getElementById("chat_btn")
 
 let body = document.getElementById("body_el")
-// let today = new Date()
-
-// let day = today.getDate()
-// let month = today.getMonth() + 1
-// let year = today.getFullYear()
-
-// let date = `${day}/${month}/${year}`
 
 let messages = JSON.parse(localStorage.getItem("messages"))
+let editMode = null
+let totalKeys = 0
+
+let passwordInput = document.getElementById("password_input")
+let passwordArea = document.getElementById("password_area")
+let passwordText = document.getElementById("pass_text")
+let mainArea = document.getElementById("main_area")
+let passVerify = document.getElementById("pass_verify")
+
+let resetBtn = document.getElementById("reset_btn")
+
+let inputArea = document.getElementById("input_area")
+let headArea = document.getElementById("bottom_head_area")
+let headText = document.getElementById("bottom_text_area")
+let bottomLogo = document.getElementById("bottom_logo")
+
+let notiAlert = document.getElementById("noti_alert")
+
+let keysTextTotal = document.getElementById("points")
+let pointsInfo = document.getElementById("points_info")
+
+let cursor = document.getElementById("cursor")
 
 if (messages === null) {
     messages = []
 }
-let editMode = null
-let totalKeys = 0
 
 function renderMsg() {
     totalKeys = 0
@@ -114,11 +127,7 @@ subBtn.addEventListener("click", function () {
 
 // renderMsg()
 
-let passwordInput = document.getElementById("password_input")
-let passwordArea = document.getElementById("password_area")
-let passwordText = document.getElementById("pass_text")
-let mainArea = document.getElementById("main_area")
-let passVerify = document.getElementById("pass_verify")
+
 
 let PIN = localStorage.getItem("pin")
 if (PIN === null) {
@@ -178,7 +187,7 @@ function checkPin() {
     }
 }
 
-let resetBtn = document.getElementById("reset_btn")
+
 
 resetBtn.addEventListener("dblclick", function () {
     if (confirm("Reset your PIN?")) {
@@ -207,10 +216,7 @@ for (let i = 1; i < 50; i++) {
     moveDot()
 }
 
-let inputArea = document.getElementById("input_area")
-let headArea = document.getElementById("bottom_head_area")
-let headText = document.getElementById("bottom_text_area")
-let bottomLogo = document.getElementById("bottom_logo")
+
 
 inputArea.addEventListener("focusin", function () {
     headArea.style.width = "12%"
@@ -249,7 +255,7 @@ function copyMsg(index) {
     alertNoti("Copied", "#5dff62")
 }
 
-let notiAlert = document.getElementById("noti_alert")
+
 
 function alertNoti(text, color) {
     notiAlert.textContent = text
@@ -262,8 +268,7 @@ function alertNoti(text, color) {
     }, 4000)
 }
 
-let keysTextTotal = document.getElementById("points")
-let pointsInfo = document.getElementById("points_info")
+
 
 keysTextTotal.addEventListener("mouseenter", function() {
     infoKey(`Earn keys to unlock more features!`)
@@ -278,7 +283,6 @@ function infoKey(text) {
     }, 2000)
 }
 
-let cursor = document.getElementById("cursor")
 
 document.addEventListener("mousemove", function(pos) {
     cursor.style.left = pos.clientX + "px"
