@@ -49,3 +49,4 @@ To unlock editing feature need 150🗝️s and 100🗝️ss for copy feature.
 - You can reset PIN and everything using double clicking on 'C' in PIN security screen (it will reset everything including your saved notes)
 - Your data is 100% safe! In technical side, only used localStorage which give more privacy to the user, Giving more importance to user privacy!
 - Use desktop sit for better expiernce
+- If you facing any *bug when tring to save a note*, just focus out of the input box then try again! :)
