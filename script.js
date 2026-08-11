@@ -227,6 +227,11 @@ inputArea.addEventListener("focusout", function () {
 })
 
 function editMsg(index) {
+    if (totalKeys <= 150) {
+        infoKey(`You need ${150 - totalKeys} more points to unlock Editing feature!`)
+        return
+    }
+
     editMode = index
     msgInputEl.value = messages[index].message
     msgInputEl.focus()
@@ -235,6 +240,11 @@ function editMsg(index) {
 }
 
 function copyMsg(index) {
+    if (totalKeys <= 100) {
+        infoKey(`You need ${100 - totalKeys} more points to unlock Copying feature!`)
+        return
+    }
+
     navigator.clipboard.writeText(messages[index].message)
     alertNoti("Copied", "#5dff62")
 }
@@ -256,8 +266,14 @@ let keysTextTotal = document.getElementById("points")
 let pointsInfo = document.getElementById("points_info")
 
 keysTextTotal.addEventListener("mouseenter", function() {
+    infoKey(`Earn keys to unlock more features!`)
+})
+
+function infoKey(text) {
+    pointsInfo.innerHTML = text
     pointsInfo.style.display = "flex"
     setTimeout(() => {
         pointsInfo.style.display = "none"
-    }, 2000);
-})
+        pointsInfo.innerHTML = ``
+    }, 2000)
+}
