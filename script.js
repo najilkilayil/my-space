@@ -20,7 +20,6 @@ if (messages === null) {
 let editMode = null
 
 function renderMsg() {
-    body.style.overflowY = "auto"
     passwordArea.style.animation = "fadeOut 0.5s"
     mainArea.style.animation = "fadeIn 0.5s"
     setInterval(() => {
