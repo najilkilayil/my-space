@@ -253,3 +253,11 @@ function alertNoti(text, color) {
 }
 
 let keysTextTotal = document.getElementById("points")
+let pointsInfo = document.getElementById("points_info")
+
+keysTextTotal.addEventListener("mouseenter", function() {
+    pointsInfo.style.display = "flex"
+    setTimeout(() => {
+        pointsInfo.style.display = "none"
+    }, 2000);
+})
