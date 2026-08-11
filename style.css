@@ -537,3 +537,31 @@ h1 {
     transition: 0.5s;
     z-index: 999;
 }
+
+.copy_btn {
+    position: absolute;
+    bottom: 6px;
+    right: 145px;
+    background: transparent;
+    width: 80px;
+    height: 25px;
+    border-radius: 16px;
+    color: #ff5D73;
+    border: 1px solid #FF5D73;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transform: scale(0.8);
+    transition: 0.5s;
+    z-index: 999;
+}
+
+.dlt_btn, .edit_btn, .copy_btn {
+    color: #D4D7DE;
+    border: 1px solid #D4D7DE;
+}
+
+.edit_btn:hover, .copy_btn:hover {
+    transform: scale(1);
+    background-color: grey;
+}

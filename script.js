@@ -46,6 +46,7 @@ function renderMsg() {
             <div class="section" id="section" data-index="${index}" style="animation-delay: ${index*0.1}s">
                 <button class="dlt_btn" id="dlt_btn" onclick="dltMsg(event, ${index})">Remove</button>
                 <button class="edit_btn" id="edit_btn" onclick="editMsg(${index})">Edit</button>
+                <button class="copy_btn" id="copy_btn" onclick="copyMsg(${index})">Copy</button>
                 <p id="msg">${item.message}</p>
                 <p id="date">${item.date}</p>
             </div>
@@ -211,4 +212,9 @@ function editMsg(index) {
     msgInputEl.focus()
 
     subBtn.textContent = "✓"
+}
+
+function copyMsg(index) {
+    navigator.clipboard.writeText(messages[index].message)
+    alert("Copied")
 }
