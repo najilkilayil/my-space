@@ -70,9 +70,11 @@ function renderMsg() {
         `
 
         totalKeys += Number(item.keys)
-        let totalKeysText = String(totalKeys).padStart(3, "0")
-        keysTextTotal.textContent = `🗝️ ${totalKeysText}` 
+        
     });
+
+    let totalKeysText = String(totalKeys).padStart(3, "0")
+    keysTextTotal.textContent = `🗝️ ${totalKeysText}` 
 }
 
 function dltMsg(event, index) {
