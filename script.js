@@ -277,3 +277,10 @@ function infoKey(text) {
         pointsInfo.innerHTML = ``
     }, 2000)
 }
+
+let cursor = document.getElementById("cursor")
+
+document.addEventListener("mousemove", function(pos) {
+    cursor.style.left = pos.clientX + "px"
+    cursor.style.top = pos.clientY + "px"
+})
