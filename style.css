@@ -509,7 +509,7 @@ h1 {
 .bottom_logo {
     text-align: center;
     font-size: 50px;
-    display: flex;
+    display: none;
 }
 
 .input_area:focus-within {
@@ -564,4 +564,42 @@ h1 {
 .edit_btn:hover, .copy_btn:hover {
     transform: scale(1);
     background-color: grey;
+}
+
+.noti_alert {
+    position: absolute;
+    right: 20%;
+    width: 40%;
+    height: 80px;
+    background-color: #151B26ad;
+    border-radius: 70px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+    animation: showNoti 4s;
+    
+    display: none;
+    opacity: 0;
+}
+
+@keyframes showNoti {
+    0% {
+        opacity: 0;
+        transform: translateY(80px);
+    }
+    25% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    75% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(80px);
+    }
 }

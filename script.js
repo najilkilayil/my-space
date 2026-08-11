@@ -17,6 +17,7 @@ let messages = JSON.parse(localStorage.getItem("messages"))
 if (messages === null) {
     messages = []
 }
+let editMode = null
 
 function renderMsg() {
     body.style.overflowY = "auto"
@@ -43,7 +44,7 @@ function renderMsg() {
 
     messages.forEach((item, index) => {
         sectionList.innerHTML += `
-            <div class="section" id="section" data-index="${index}" style="animation-delay: ${index*0.1}s">
+            <div class="section" id="section" data-index="${index}" style="animation-delay: ${index * 0.1}s">
                 <button class="dlt_btn" id="dlt_btn" onclick="dltMsg(event, ${index})">Remove</button>
                 <button class="edit_btn" id="edit_btn" onclick="editMsg(${index})">Edit</button>
                 <button class="copy_btn" id="copy_btn" onclick="copyMsg(${index})">Copy</button>
@@ -70,21 +71,28 @@ subBtn.addEventListener("click", function () {
 
     let today = new Date()
     let day = String(today.getDate()).padStart(2, "0")
-    let month = today.toLocaleString("en-US", {month: "short"})
+    let month = today.toLocaleString("en-US", { month: "short" })
     let year = today.getFullYear()
     let date = `${day}-${month}-${year}`
 
     if (editMode === null) {
-    messages.push({
-        message: msgInputEl.value,
-        date: date
-    })
+        messages.push({
+            message: msgInputEl.value,
+            date: date
+        })
+        setTimeout(() => {
+            alertNoti("Saved", "#5dff62")
+        }, 700);
     } else {
         messages[editMode].message = msgInputEl.value
         messages[editMode].date = date
         editMode === null
         subBtn.textContent = "➤"
+        setTimeout(() => {
+            alertNoti("Edited", "#D4D7DE")
+        }, 700);
     }
+
     localStorage.setItem("messages", JSON.stringify(messages))
     msgInputEl.value = ''
     msgInputEl.blur()
@@ -152,15 +160,15 @@ function checkPin() {
                 passVerify.innerHTML = `For Reset double click on C`
                 passwordInput.style.color = "#F7F8FA"
             }, 1500)
-            
-            
+
+
         }
     }
 }
 
 let resetBtn = document.getElementById("reset_btn")
 
-resetBtn.addEventListener("dblclick", function() {
+resetBtn.addEventListener("dblclick", function () {
     if (confirm("Reset your PIN?")) {
         localStorage.removeItem("pin")
         PIN = null
@@ -174,7 +182,7 @@ resetBtn.addEventListener("dblclick", function() {
 })
 
 // dot random motion and animation 
-for (let i=1; i < 50; i++) {
+for (let i = 1; i < 50; i++) {
     let dot = document.createElement("div")
     dot.className = "dot"
     dot.style = `--i: ${i}`
@@ -192,13 +200,13 @@ let headArea = document.getElementById("bottom_head_area")
 let headText = document.getElementById("bottom_text_area")
 let bottomLogo = document.getElementById("bottom_logo")
 
-inputArea.addEventListener("focusin", function() {
+inputArea.addEventListener("focusin", function () {
     headArea.style.width = "10%"
     headText.style.display = "none"
     bottomLogo.style.display = "block"
 })
 
-inputArea.addEventListener("focusout", function() {
+inputArea.addEventListener("focusout", function () {
     headArea.style.width = "80%"
     bottomLogo.style.display = "none"
     setTimeout(() => {
@@ -216,5 +224,18 @@ function editMsg(index) {
 
 function copyMsg(index) {
     navigator.clipboard.writeText(messages[index].message)
-    alert("Copied")
+    alertNoti("Copied", "#5dff62")
+}
+
+let notiAlert = document.getElementById("noti_alert")
+
+function alertNoti(text, color) {
+    notiAlert.textContent = text
+    notiAlert.style.color = color
+    notiAlert.style.display = "flex"
+    headArea.style.width = "35%"
+    setTimeout(() => {
+        notiAlert.style.display = "none"
+        headArea.style.width = "80%"
+    }, 4000)
 }
