@@ -57,7 +57,7 @@ body {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    margin-top: 10%;
+    margin-top: 2%;
 }
 
 .section {
@@ -294,7 +294,7 @@ body {
 
 .dlt_btn {
     position: absolute;
-    top: 6px;
+    bottom: 6px;
     right: 6px;
     background: transparent;
     width: 80px;
@@ -518,4 +518,22 @@ h1 {
 
 .input_area:focus-within #chat_btn {
     display: block;
+}
+
+.edit_btn {
+    position: absolute;
+    bottom: 6px;
+    right: 75px;
+    background: transparent;
+    width: 80px;
+    height: 25px;
+    border-radius: 16px;
+    color: #ff5D73;
+    border: 1px solid #FF5D73;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transform: scale(0.8);
+    transition: 0.5s;
+    z-index: 999;
 }

@@ -45,6 +45,7 @@ function renderMsg() {
         sectionList.innerHTML += `
             <div class="section" id="section" data-index="${index}" style="animation-delay: ${index*0.1}s">
                 <button class="dlt_btn" id="dlt_btn" onclick="dltMsg(event, ${index})">Remove</button>
+                <button class="edit_btn" id="edit_btn" onclick="editMsg(${index})">Edit</button>
                 <p id="msg">${item.message}</p>
                 <p id="date">${item.date}</p>
             </div>
@@ -72,11 +73,17 @@ subBtn.addEventListener("click", function () {
     let year = today.getFullYear()
     let date = `${day}-${month}-${year}`
 
+    if (editMode === null) {
     messages.push({
         message: msgInputEl.value,
         date: date
     })
-
+    } else {
+        messages[editMode].message = msgInputEl.value
+        messages[editMode].date = date
+        editMode === null
+        subBtn.textContent = "➤"
+    }
     localStorage.setItem("messages", JSON.stringify(messages))
     msgInputEl.value = ''
     msgInputEl.blur()
@@ -197,3 +204,11 @@ inputArea.addEventListener("focusout", function() {
         headText.style.display = "flex"
     }, 400);
 })
+
+function editMsg(index) {
+    editMode = index
+    msgInputEl.value = messages[index].message
+    msgInputEl.focus()
+
+    subBtn.textContent = "✓"
+}
