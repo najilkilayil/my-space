@@ -18,8 +18,11 @@ if (messages === null) {
     messages = []
 }
 let editMode = null
+let totalKeys = 0
 
 function renderMsg() {
+    totalKeys = 0
+
     passwordArea.style.animation = "fadeOut 0.5s"
     mainArea.style.animation = "fadeIn 0.5s"
     setTimeout(() => {
@@ -49,8 +52,13 @@ function renderMsg() {
                 <button class="copy_btn" id="copy_btn" onclick="copyMsg(${index})">Copy</button>
                 <p id="msg">${item.message}</p>
                 <p id="date">${item.date}</p>
+                <p id="keys">🗝️ ${item.keys}</p>
             </div>
         `
+
+        totalKeys += Number(item.keys)
+        let totalKeysText = String(totalKeys).padStart(3, "0")
+        keysTextTotal.textContent = `🗝️ ${totalKeysText}` 
     });
 }
 
@@ -75,10 +83,14 @@ subBtn.addEventListener("click", function () {
     let year = today.getFullYear()
     let date = `${day}-${month}-${year}`
 
+    let letterCount = msgInputEl.value.length
+    let keys = String(Math.floor(letterCount / 4)).padStart(2, "0")
+
     if (editMode === null) {
         messages.push({
             message: msgInputEl.value,
-            date: date
+            date: date,
+            keys: keys
         })
         setTimeout(() => {
             alertNoti("Saved", "#5dff62")
@@ -239,3 +251,5 @@ function alertNoti(text, color) {
         headArea.style.width = "80%"
     }, 4000)
 }
+
+let keysTextTotal = document.getElementById("points")

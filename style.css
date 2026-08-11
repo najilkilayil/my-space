@@ -609,3 +609,28 @@ h1 {
         transform: translateY(80px);
     }
 }
+
+.points {
+    position: fixed;
+    top: 2%;
+    right: 20%;
+    padding: 10px 20px;
+    background-color: #151B26ad;
+    color: #D4D7DE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 70px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#keys {
+    padding: 5px;
+    padding-left: 0;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
